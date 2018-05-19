@@ -5,11 +5,12 @@ import models
 
 class InlineImage(admin.TabularInline):
   model = models.Image
+  extra=0
 class Sampleadmin(admin.ModelAdmin):
   inlines = [InlineImage]
   list_display=('id','name','serialnumber','customer','input_date','product_state')
   search_fields=('name',)
-  list_filter=('customer','input_date',)
+  list_filter=('customer','product_state','input_date',)
   list_per_page=5
   list_editable=('product_state',)
   list_select_related=('customer',)
@@ -20,13 +21,13 @@ class Sampleadmin(admin.ModelAdmin):
 
   def set_status_checkout(modeladmin,request,queryset):
     selected=request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
-    models.Book.objects.filter(id__in=selected).update(publisher_state='checkout')
+    models.Sample.objects.filter(id__in=selected).update(product_state='checkout')
   def set_status_sealed(modeladmin,request,queryset):
     selected=request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
-    models.Book.objects.filter(id__in=selected).update(publisher_state='sealed')
+    models.Sample.objects.filter(id__in=selected).update(product_state='sealed')
   def set_status_wait_sealing(modeladmin,request,queryset):
     selected=request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
-    models.Book.objects.filter(id__in=selected).update(publisher_state='wait_sealing')
+    models.Sample.objects.filter(id__in=selected).update(product_state='wait_sealing')
 #  def set_status_wait_sealing(modeladmin,request,queryset):
 #    selected=request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
 #    models.Book.objects.filter(id__in=selected).delete()
