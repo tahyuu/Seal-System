@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['*',]
 INSTALLED_APPS = [
     'suit',
     'sample',
-    'pictest',
+    #'pictest',
     #'books',
     #'blog',
     #'TestModel',
