@@ -32,12 +32,14 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 INSTALLED_APPS = [
+    'inlinetrial',
     'suit',
     'sample',
-    #'pictest',
-    #'books',
-    #'blog',
-    #'TestModel',
+    'pictest',
+    'books',
+    'blog',
+    'TestModel',
+    'project',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,13 +142,17 @@ DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
  
 SUIT_CONFIG = {  # suit页面配置
-    'ADMIN_NAME': u'产品封存管理系统',  # 登录界面提示
+    'ADMIN_NAME': u'管理系统',  # 登录界面提示
     'LIST_PER_PAGE': 20,  # 表中显示行数
     'MENU': ({'label': u'用户管理', 'app': 'auth',
               'icon': 'icon-lock',  # 显示左边菜单的图标
               'models': ('auth.User', 'auth.Group')},  # 每一个字典表示左侧菜单的一栏
              {'label': u'产品管理', 'app': 'sample',
               'models': ('sample.Sample', 'sample.Department', 'sample.Customer', 'frame.Modules', 'frame.MachineRooms',
+                         'frame.Bases', 'frame.Accounts', 'frame.Zabbix_Hosts', 'frame.Zabbix_Items', 'frame.Whites',
+                         'frame.Pyscripts', 'frame.Pyfuncs', 'frame.Global_confs', 'frame.Alarms')},
+             {'label': u'项目管理', 'app': 'project',
+              'models': ('project.Project', 'project.Department', 'project.Customer', 'frame.Modules', 'frame.MachineRooms',
                          'frame.Bases', 'frame.Accounts', 'frame.Zabbix_Hosts', 'frame.Zabbix_Items', 'frame.Whites',
                          'frame.Pyscripts', 'frame.Pyfuncs', 'frame.Global_confs', 'frame.Alarms')},
              ),
